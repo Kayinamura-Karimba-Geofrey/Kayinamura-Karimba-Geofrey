@@ -1,6 +1,6 @@
 <h1>Student Form</h1>
     <form method="POST" action="geofrey.php">
-        <input type="search" name="searchQuery" placeholder="Search"><input type="submit" value="Search"><br>
+        <input type="search" name="searchquerry" placeholder="Search"><input type="submit" value="Search"><br>
         <input type="url" name="websiteURL" placeholder="URL"><input type="submit" value="Go">
         <fieldset>
             <legend><h1>Student`s form</h1></legend>
@@ -12,7 +12,7 @@
             <label for="first"> First name</label><br>
             <input type="text" id="first" name="firstName" placeholder="First name"><br>
             
-            <label for="last name> last name</label><br>
+            <label for="last name"> last name</label><br>
             <input type="text" id="last" name="lastName" placeholder="Last name"><br>
             
             <label for="email">Email</label><br>
@@ -75,12 +75,11 @@
 </html>
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $searchQuery = $_POST['searchQuery'];
+    $searchbox = isset($_POST['searchquerry'])?$_POST['searchquerry']:0;
     $websiteURL = $_POST['websiteURL'];
     $surveyDate = $_POST['surveyDate'];
     $surveyTime = $_POST['surveyTime'];
     $firstName = $_POST['firstName'];
-    $lastName = $_POST['lastName'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $telephone = $_POST['telephone'];
@@ -88,43 +87,98 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $gender = $_POST['gender'];
     $class = $_POST['class'];
     $age = $_POST['age'];
-    $subjects = (array)$_POST['subjects'];
+    $subjects = $_POST['subjects'];
     $level = $_POST['level'];
-   
     $color = $_POST['color'];
     $hiddenCode = $_POST['hiddenCode'];
     $comment = $_POST['comment'];
-    if  ($searchQuery !='' && $websiteURL !='' &&$surveyDate !='' &&
-    $surveyTime !='' &&$firstName !='' &&$lastName !='' && $email !='' &&$password !='' &&
+    if  ( $websiteURL !='' &&$surveyDate !='' &&
+    $surveyTime !='' &&$firstName !='' && $email !='' &&$password !='' &&
     $telephone !='' && $school !='' && $gender !='' && $class !='' &&
     $age !='' &&$subjects !='' &&$level !=''  ){
-        echo "Search Query: $searchQuery<br>";
-        echo "Website URL: $websiteURL<br>";
-        echo "Survey Date: $surveyDate<br>";
-        echo "Survey Time: $surveyTime<br>";
-        echo "First Name: $firstName<br>";
-        echo "Last Name: $lastName<br>";
-        echo "Email: $email<br>";
-        echo "Password: $password<br>";
-        echo "Telephone: $telephone<br>";
-        echo "School: $school<br>";
-        echo "Gender:".$gender."<br>";
-        echo "Class: $class<br>";
-        echo "Age: $age<br>";
-        echo "Subjects: " . implode(", ", (array)$subjects) . "<br>";
-        echo "Level: $level<br>";
-        echo "Favorite Color: $color<br>";
-        echo "Hidden Code: $hiddenCode<br>";
-        echo "Comment: $comment<br>";
+        echo "<div class='div'><table border='1' cellspacing='0' width='100%'>
+        <thead>
+            <tr>
+                <th>Field Name</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+ 
+            <tr>
+                <th>Website URL</th>
+                <td>$websiteURL</td>
+            </tr>
+            <tr>
+                <th>Survey Date</th>
+                <td>$surveyDate</td>
+            </tr>
+            <tr>
+                <th>Survey Time</th>
+                <td>$surveyTime</td>
+            </tr>
+            <tr>
+                <th>First Name</th>
+                <td>$firstName</td>
+            </tr>
+            
+            <tr>
+                <th>Email</th>
+                <td>$email</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>$password</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>$telephone</td>
+            </tr>
+            <tr>
+                <th>School</th>
+                <td>$school</td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>$gender</td>
+            </tr>
+            <tr>
+                <th>Class</th>
+                <td>$class</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>$age</td>
+            </tr>
+            <tr>
+                <th>Subjects</th>
+                <td>$subjects</td>
+            </tr>
+            <tr>
+                <th>Level</th>
+                <td>$level</td>
+            </tr>
+            <tr>
+                <th>Favorite Color</th>
+                <td>$color</td>
+            </tr>
+            <tr>
+                <th>Hidden Code</th>
+                <td>$hiddenCode</td>
+            </tr>
+            <tr>
+                <th>Comment</th>
+                <td>$comment</td
+                </div>";
+                
     }else{
-        echo "invalid" ;
-    }   
+        echo 'invalid.';
+    }
     }
    
+
 ?>
-
-
-
+   
 
 
 
